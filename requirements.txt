@@ -18,6 +18,9 @@ einops
 wandb
 rich
 openai-whisper
+ffmpeg-python
+faster-whisper
+
 
 # PyTorch (CPU-only or generic)
 # torch

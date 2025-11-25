@@ -2,14 +2,17 @@ import os
 import whisper
 from pathlib import Path
 
-def transcribe_audio_files(data_folder="../../dataset", model_size="large"):
+def transcribe_audio_files(data_folder=None, model_size="large"):
     """
-    Transcribe clean audio files from Task1 and Task2 (train/val splits) using Whisper.
-    
-    Args:
-        data_folder: Root folder containing Task1 and Task2
-        model_size: Whisper model size (tiny, base, small, medium, large)
+    Transcribe clean audio files from Task1 and Task2 using Whisper.
     """
+
+    # auto-detect dataset folder
+    if data_folder is None:
+        data_folder = Path(__file__).resolve().parents[2] / "dataset"
+
+    data_folder = Path(data_folder)
+    print("Using dataset path:", data_folder)
     
     # Load Whisper model
     print(f"Loading Whisper {model_size} model...")
