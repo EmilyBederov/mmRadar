@@ -17,6 +17,7 @@ librosa
 einops
 wandb
 rich
+openai-whisper
 
 # PyTorch (CPU-only or generic)
 # torch

@@ -2,7 +2,7 @@ import os
 import whisper
 from pathlib import Path
 
-def transcribe_audio_files(data_folder="../../dataset", model_size="base"):
+def transcribe_audio_files(data_folder="../../dataset", model_size="large"):
     """
     Transcribe clean audio files from Task1 and Task2 (train/val splits) using Whisper.
     
@@ -82,5 +82,5 @@ if __name__ == "__main__":
     
     transcribe_audio_files(
         data_folder="../../data",
-        model_size="base"  # Change to "small", "medium", or "large" for better accuracy
+        model_size="large"  # Change to "small", "medium", or "large" for better accuracy
     )
