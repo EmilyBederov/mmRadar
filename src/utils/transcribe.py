@@ -1,6 +1,7 @@
 import os
 import whisper
 from pathlib import Path
+import torch
 
 def transcribe_audio_files(data_folder=None, model_size="large"):
     """
@@ -16,7 +17,9 @@ def transcribe_audio_files(data_folder=None, model_size="large"):
     
     # Load Whisper model
     print(f"Loading Whisper {model_size} model...")
-    model = whisper.load_model(model_size)
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    model = whisper.load_model(model_size, device=device)
+    print("Running on:", device)
     
     # Define tasks and splits
     tasks = ["Task1", "Task2"]
