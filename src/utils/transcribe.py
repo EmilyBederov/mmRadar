@@ -87,6 +87,6 @@ if __name__ == "__main__":
     # base is a good balance for most use cases
     
     transcribe_audio_files(
-        data_folder="../../dataset",
+        data_folder="../dataset",
         model_size="large"  # Change to "small", "medium", or "large" for better accuracy
     )
