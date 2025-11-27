@@ -28,28 +28,28 @@ def transcribe_audio_files(data_folder=None, model_size="large"):
     for task in tasks:
         for split in splits:
             # Define paths
-            clean_audio_path = Path(data_folder) / task / "Recorded" / split
-            transcription_output_path = Path(data_folder) / "transcriptions" / task / split
+            noisy_audio_path = Path(data_folder) / task / "Recorded" / split
+            transcription_output_path = Path(data_folder) / "noisy_transcriptions" / task / split
             
             # Create output directory if it doesn't exist
             transcription_output_path.mkdir(parents=True, exist_ok=True)
             
-            # Check if clean audio folder exists
-            if not clean_audio_path.exists():
-                print(f"Warning: {clean_audio_path} does not exist. Skipping {task}/{split}.")
+            # Check if noisy audio folder exists
+            if not noisy_audio_path.exists():
+                print(f"Warning: {noisy_audio_path} does not exist. Skipping {task}/{split}.")
                 continue
             
             # Get all audio files (common formats)
             audio_extensions = ['.wav', '.mp3', '.m4a', '.flac', '.ogg', '.aac']
             audio_files = []
             for ext in audio_extensions:
-                audio_files.extend(clean_audio_path.glob(f"*{ext}"))
+                audio_files.extend(noisy_audio_path.glob(f"*{ext}"))
             
             # Sort to maintain consistent order
             audio_files = sorted(audio_files)
             
             if not audio_files:
-                print(f"No audio files found in {clean_audio_path}")
+                print(f"No audio files found in {noisy_audio_path}")
                 continue
             
             print(f"\n{'='*60}")
